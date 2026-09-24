@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="theme-color" content="#FFF4E6">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>抽選メモ</title>
+<title>ポケカ抽選まとめ｜宮城・福島と全国通販の締切カレンダー</title>
+<meta name="description" content="ポケモンカード・ワンピースカード・遊戯王の抽選販売と予約受付を、締切が近い順にまとめています。宮城・福島の店舗と、全国どこからでも応募できる通販が対象。今日締切の抽選と、自分がまだ応募していない分がひと目で分かります。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ポケカ抽選まとめ｜宮城・福島と全国通販の締切カレンダー">
+<meta property="og:description" content="ポケカ・ワンピ・遊戯王の抽選と予約を締切順に。今日締切と未応募がすぐ分かります。">
+<meta property="og:locale" content="ja_JP">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
@@ -169,6 +174,48 @@ textarea{resize:vertical;min-height:58px;font-size:15px}
   z-index:20;background:var(--sun);color:var(--ink);border:2.5px solid var(--line);border-radius:99px;
   padding:13px 26px;font-size:15px;font-weight:800;box-shadow:4px 4px 0 var(--line)}
 .fab:active{transform:translateX(-50%) translate(2px,2px);box-shadow:2px 2px 0 var(--line)}
+
+/* 今日やること：サマリー */
+.summary{display:flex;gap:7px;margin:0 0 13px;flex-wrap:wrap}
+.sum{display:flex;align-items:baseline;gap:5px;background:var(--card);border:2px solid var(--line);
+  border-radius:14px;padding:5px 12px;font-size:12px;font-weight:700;color:var(--ink-2);box-shadow:var(--shadow-sm)}
+.sum b{font-size:18px;font-weight:800;color:var(--ink);font-family:"Baloo 2","Zen Maru Gothic",sans-serif}
+.sum.urgent{background:var(--hot);border-color:var(--line);color:#fff}
+.sum.urgent b{color:#fff}
+.sum.todo{background:var(--sun);color:var(--ink)}
+.sum.calm{opacity:.85}
+.sum:active{transform:translate(2px,2px);box-shadow:none}
+
+/* セクション見出し（今日やること） */
+.sect{display:flex;align-items:center;gap:8px;margin:6px 0 -2px;font-size:13px;font-weight:800;color:var(--ink)}
+.sect:first-child{margin-top:0}
+.sect span{font-size:11px;font-weight:700;color:var(--ink-3)}
+.sect::before{content:"";width:12px;height:12px;border:2px solid var(--line);border-radius:4px;background:var(--sun)}
+.sect.s-today::before{background:var(--hot)}
+.sect.s-soon::before{background:var(--sky)}
+.sect.s-wait::before{background:var(--win)}
+
+/* 残り時間の強調 */
+.item.today{box-shadow:3px 3px 0 var(--hot);border-color:var(--hot)}
+.left{display:inline-flex;align-items:center;gap:4px;border:2px solid var(--line);border-radius:99px;
+  padding:1px 10px;font-size:12px;font-weight:800;background:var(--field);color:var(--ink)}
+.left.l-now{background:var(--hot);color:#fff}
+.left.l-soon{background:var(--sun);color:var(--ink)}
+.left.l-calm{background:var(--field);color:var(--ink-2);font-weight:700}
+.unapplied{display:inline-block;font-size:11px;font-weight:800;padding:1px 9px;border-radius:99px;
+  border:2px solid var(--line);background:var(--hot);color:#fff;margin-right:7px;vertical-align:2px}
+
+/* 応募ボタン（外部リンク） */
+.open-btn{display:inline-flex;align-items:center;gap:6px;background:var(--sky);color:#fff;
+  border:2px solid var(--line);border-radius:99px;padding:7px 15px;font-size:13px;font-weight:800;
+  box-shadow:var(--shadow-sm);margin-top:9px}
+.open-btn.off{background:var(--track);color:var(--ink-3);box-shadow:none}
+.head:active .open-btn{transform:translate(2px,2px);box-shadow:none}
+
+/* 情報元 */
+.src{font-size:11px;color:var(--ink-3);padding:0 15px 12px;margin-top:-4px;display:flex;gap:8px;flex-wrap:wrap}
+.src .ofc{border:1.5px solid var(--win);color:var(--win);border-radius:99px;padding:0 7px;font-weight:700}
+
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -176,14 +223,17 @@ textarea{resize:vertical;min-height:58px;font-size:15px}
 <div class="wrap">
   <div class="top">
     <h1>抽選メモ</h1>
-    <span class="sub">ポケカ / ワンピ</span>
+    <span class="sub">ポケカ / ワンピ / 遊戯王</span>
     <button class="theme" id="themeBtn">表示切替</button>
   </div>
 
   <div class="hero" id="hero"></div>
 
+  <div class="summary" id="summary"></div>
+
   <div class="tabs" role="tablist">
-    <button class="tab" role="tab" data-tab="open" aria-selected="true">受付中<em id="cOpen"></em></button>
+    <button class="tab tab-today" role="tab" data-tab="today" aria-selected="true">今日やること<em id="cToday"></em></button>
+    <button class="tab" role="tab" data-tab="open" aria-selected="false">受付中<em id="cOpen"></em></button>
     <button class="tab" role="tab" data-tab="soon" aria-selected="false">開始前<em id="cSoon"></em></button>
     <button class="tab" role="tab" data-tab="wait" aria-selected="false">結果待ち<em id="cWait"></em></button>
     <button class="tab" role="tab" data-tab="done" aria-selected="false">結果<em id="cDone"></em></button>
@@ -276,7 +326,7 @@ var CATALOG=[
 var STAMP='2026年9月16日時点で受付中だった商品の抽選販売';
 
 var SKEY='chusen.state.v2', CKEY='chusen.custom.v2', OLD='chusen.entries.v1', TKEY='chusen.theme', AKEY='chusen.area.v1';
-var state={}, custom=[], tab='open', editing=null, pending=null, showEnded=false;
+var state={}, custom=[], tab='today', editing=null, pending=null, showEnded=false;
 var area=''; /* '' = すべて / 'local' = 宮城・福島 / '全国' */
 var $=function(i){return document.getElementById(i)};
 
@@ -332,10 +382,44 @@ function phase(e,now){
   return 'open';
 }
 
+/* 今日/明日/3日以内 の判定用。日付だけを見る */
+function dayStart(d){ return new Date(d.getFullYear(),d.getMonth(),d.getDate()).getTime() }
+function daysApart(target,now){ return Math.round((dayStart(target)-dayStart(now))/86400000) }
+
+/* 締切の近さ。today / tomorrow / soon3（3日以内） / later / null */
+function endBucket(e,now){
+  var en=dt(e.end); if(!en||en<now) return null;
+  var d=daysApart(en,now);
+  return d<=0?'today' : d===1?'tomorrow' : d<=3?'soon3' : 'later';
+}
+
+/* 残り時間の文言 */
+function leftText(en,now){
+  var r=remain(en,now);
+  if(!r) return null;
+  if(r.days>=1) return 'あと'+r.days+'日'+(r.hours?r.hours+'時間':'');
+  if(r.totalHours>=1) return 'あと'+r.totalHours+'時間'+(r.mins?r.mins+'分':'');
+  return 'あと'+r.mins+'分';
+}
+
 function remain(end,now){
   var ms=end-now; if(ms<=0) return null;
   var mins=Math.floor(ms/60000), hours=Math.floor(mins/60);
   return {days:Math.floor(hours/24),hours:hours%24,mins:mins%60,totalHours:hours};
+}
+
+/* 今日やること：今日〜3日以内に締切の未応募 / 今日開始 / 今日以前が発表日の結果待ち */
+function todayReason(e,now){
+  var p=phase(e,now), v=st(e.id);
+  if(p==='open'&&v==='none'){
+    var b=endBucket(e,now);
+    if(b==='today') return 'today';
+    if(b==='tomorrow') return 'tomorrow';
+    if(b==='soon3') return 'soon3';
+  }
+  if(p==='soon'){ var s2=dt(e.start); if(s2&&daysApart(s2,now)===0) return 'start'; }
+  if(p==='wait'){ var an=dt(e.announce); if(an&&daysApart(an,now)<=0) return 'result'; }
+  return null;
 }
 
 /* ---- hero ---- */
@@ -363,18 +447,60 @@ function renderHero(){
     '<div class="who"><b>'+esc(best.shop)+'</b>　'+esc(best.item)+'<br>'+stamp(bestD)+'まで</div>';
 }
 
+/* ---- サマリー ---- */
+function renderSummary(){
+  var now=new Date(), n={today:0,tomorrow:0,soon3:0,open:0,soon:0,wait:0,todo:0,result:0};
+  visible().forEach(function(e){
+    var p=phase(e,now), v=st(e.id), b=endBucket(e,now);
+    if(p==='open'){
+      n.open++;
+      if(v==='none'){ n.todo++; if(b==='today') n.today++; else if(b==='tomorrow') n.tomorrow++; else if(b==='soon3') n.soon3++; }
+    }
+    if(p==='soon') n.soon++;
+    if(p==='wait'){ n.wait++; var an=dt(e.announce); if(an&&daysApart(an,now)<=0) n.result++; }
+  });
+  var out=[];
+  if(n.today) out.push('<button class="sum urgent" data-jump="today"><b>'+n.today+'</b>件 今日締切</button>');
+  if(n.tomorrow) out.push('<button class="sum todo" data-jump="today"><b>'+n.tomorrow+'</b>件 明日締切</button>');
+  if(n.soon3) out.push('<button class="sum" data-jump="today"><b>'+n.soon3+'</b>件 3日以内</button>');
+  if(n.result) out.push('<button class="sum todo" data-jump="wait"><b>'+n.result+'</b>件 結果確認</button>');
+  out.push('<button class="sum'+(n.todo&&!n.today&&!n.tomorrow?' todo':'')+'" data-jump="open"><b>'+n.todo+'</b>件 未応募</button>');
+  if(n.wait) out.push('<button class="sum calm" data-jump="wait"><b>'+n.wait+'</b>件 結果待ち</button>');
+  if(n.soon) out.push('<button class="sum calm" data-jump="soon"><b>'+n.soon+'</b>件 開始前</button>');
+  $('summary').innerHTML=out.join('');
+}
+
+/* 条件タグ。今あるデータ（エリア・方式・配送・note の「条件:」）だけから作る */
+function tagsOf(e){
+  var t=[];
+  if(e.kind) t.push(e.kind);
+  if(e.area) t.push(e.area);
+  if(e.ships===true) t.push('配送あり');
+  if(e.ships===false) t.push('店頭受取');
+  var m=/条件[:：]\s*([^\s]+)/.exec(e.note||'');
+  if(m) m[1].split(/[\/・]/).forEach(function(x){ if(x&&t.indexOf(x)<0) t.push(x) });
+  if(e.mine) t.push('自分で追加');
+  return t;
+}
+
 /* ---- card ---- */
 function card(e){
   var now=new Date(), p=phase(e,now), s=dt(e.start), en=dt(e.end), an=dt(e.announce), v=st(e.id);
-  var hot=false, spanL='', spanR='', pct=0, barDone=false;
+  var hot=false, isToday=false, spanL='', spanR='', pct=0, barDone=false;
 
   if(en){
-    var r=remain(en,now);
+    var r=remain(en,now), b=endBucket(e,now);
     if(!r){ spanR='<b class="cool">受付終了</b>'; pct=100; barDone=true; }
-    else if(s&&s>now){ spanR='<b class="cool">開始まであと'+(remain(s,now).days>=1?remain(s,now).days+'日':remain(s,now).totalHours+'時間')+'</b>'; pct=0 }
-    else{
-      hot = r.totalHours<48;
-      spanR='<b>残り'+(r.days>=1? r.days+'日'+r.hours+'時間' : r.totalHours+':'+pad(r.mins))+'</b>';
+    else if(s&&s>now){
+      var rs=remain(s,now);
+      spanR='<b class="cool">開始まであと'+(rs.days>=1?rs.days+'日':rs.totalHours+'時間')+'</b>'; pct=0;
+    }else{
+      hot = r.totalHours<72; isToday = b==='today';
+      var cls = b==='today' ? 'l-now' : (b==='tomorrow'||b==='soon3') ? 'l-soon' : 'l-calm';
+      var txt = b==='today' ? (r.totalHours<1 ? 'まもなく締切・'+leftText(en,now) : '本日'+hm(en)+'締切')
+              : b==='tomorrow' ? '明日'+hm(en)+'締切・'+leftText(en,now)
+              : leftText(en,now);
+      spanR='<span class="left '+cls+'">'+txt+'</span>';
       if(s) pct=Math.max(2,Math.min(100,(now-s)/(en-s)*100)); else pct=50;
     }
     spanL=(s?stamp(s):'？')+'　→　'+stamp(en);
@@ -382,20 +508,28 @@ function card(e){
     spanL=(s?stamp(s)+' 〜':'期間未定'); spanR='<b class="cool">終了日の告知なし</b>'; pct=40;
   }
 
+  /* 応募の状態 */
   var badge='';
-  if(v==='applied') badge='<span class="badge b-wait">応募ずみ</span>';
+  if(v==='applied'){
+    var waitTxt='応募ずみ';
+    if(an){ var d=daysApart(an,now); waitTxt = d>0 ? '結果発表まであと'+d+'日' : d===0 ? '本日 結果発表' : '結果を確認'; }
+    badge='<span class="badge b-wait">'+waitTxt+'</span>';
+  }
   if(v==='won') badge='<span class="badge b-win">当選</span>';
   if(v==='lost') badge='<span class="badge b-lose">落選</span>';
+  if(v==='none'&&p==='open'&&(isToday||endBucket(e,now)==='tomorrow')) badge='<span class="unapplied">未応募</span>'+badge;
 
-  var meta='<span class="tagk">'+esc(e.kind||'抽選')+'</span>';
-  if(e.area) meta+='<span class="tagk">'+esc(e.area)+'</span>';
+  /* 条件タグ */
+  var meta=tagsOf(e).map(function(t){ return '<span class="tagk">'+esc(t)+'</span>' }).join('');
   if(an) meta+='<span>発表 '+md(an)+'('+wd(an)+')</span>';
-  if(e.mine) meta+='<span class="tagk">自分で追加</span>';
+
+  var btn = e.url
+    ? '<span class="open-btn">公式サイトで応募 ↗</span>'
+    : '<span class="open-btn off">'+(e.kind==='店頭抽選'?'店頭で応募（リンクなし）':'応募ページの記載なし')+'</span>';
 
   var headInner='<div class="eyebrow">'+meta+'</div>'+
     '<h3>'+badge+esc(e.shop)+'</h3>'+
-    '<div style="font-size:13px;color:var(--ink-2);margin-top:1px">'+esc(e.item)+'</div>'+
-    (e.url? '<div class="goto">応募ページを開く</div>' : '<div class="goto off">'+(e.kind==='店頭抽選'?'店頭で応募':'リンクなし')+'</div>');
+    '<div style="font-size:13px;color:var(--ink-2);margin-top:1px">'+esc(e.item)+'</div>'+btn;
 
   var head = e.url
     ? '<button class="head" data-act="open" data-id="'+e.id+'">'+headInner+'</button>'
@@ -413,15 +547,34 @@ function card(e){
   }
   if(e.mine) acts+='<button class="pill ghost" data-act="edit" data-id="'+e.id+'">編集</button>';
 
-  return '<div class="item'+(hot&&p==='open'?' hot':'')+'">'+head+
+  /* 情報元（データにある時だけ） */
+  var src='';
+  if(e.source||e.checkedAt){
+    var c=dt(e.checkedAt);
+    src='<div class="src">'+(e.official?'<span class="ofc">公式</span>':'')+
+      (e.source?'<span>情報元: '+esc(e.source)+'</span>':'')+
+      (c?'<span>'+md(c)+'('+wd(c)+') '+hm(c)+' 確認</span>':'')+'</div>';
+  }
+
+  return '<div class="item'+(isToday&&p==='open'?' today':(hot&&p==='open'?' hot':''))+'">'+head+
     '<div class="period"><div class="bar'+(barDone?' done':'')+'"><i style="width:'+pct+'%"></i></div>'+
     '<div class="span"><span>'+spanL+'</span>'+spanR+'</div></div>'+
-    (e.note?'<div class="note">'+esc(e.note)+'</div>':'')+
+    (e.note?'<div class="note">'+esc(e.note)+'</div>':'')+src+
     '<div class="acts">'+acts+'</div></div>';
 }
 
 function listFor(t){
   var now=new Date();
+  if(t==='today'){
+    var order={today:0,tomorrow:1,soon3:2,start:3,result:4};
+    return visible().filter(function(e){ return !!todayReason(e,now) })
+      .sort(function(a,b){
+        var d=order[todayReason(a,now)]-order[todayReason(b,now)];
+        if(d) return d;
+        var x=dt(a.end)||dt(a.start)||dt(a.announce), y=dt(b.end)||dt(b.start)||dt(b.announce);
+        if(!x) return 1; if(!y) return -1; return x-y;
+      });
+  }
   var arr=visible().filter(function(e){
     var p=phase(e,now);
     if(t==='open') return p==='open'||(showEnded&&p==='ended');
@@ -436,6 +589,24 @@ function listFor(t){
 
 function renderList(){
   var arr=listFor(tab), el=$('list');
+  if(tab==='today'){
+    if(!arr.length){
+      el.innerHTML='<div class="empty"><b>今日やることはありません</b>締切が近い未応募と、今日の結果発表がここに出ます。</div>';
+      return;
+    }
+    var now=new Date(), labels={
+      today:['今日締切','s-today'], tomorrow:['明日締切','s-soon'], soon3:['3日以内に締切','s-soon'],
+      start:['今日 受付開始','s-soon'], result:['結果を確認','s-wait']
+    }, cur='', html='';
+    arr.forEach(function(e){
+      var k=todayReason(e,now);
+      if(k!==cur){ cur=k; html+='<div class="sect '+labels[k][1]+'">'+labels[k][0]+
+        '<span>'+arr.filter(function(x){return todayReason(x,now)===k}).length+'件</span></div>'; }
+      html+=card(e);
+    });
+    el.innerHTML=html;
+    return;
+  }
   if(!arr.length){
     var m={open:['受付中の抽選はありません','締切が過ぎた未応募分は自動で隠れています。'],
            soon:['開始待ちはありません','これから始まる抽選が入るとここに出ます。'],
@@ -450,6 +621,8 @@ function renderList(){
 function counts(){
   var now=new Date(), c={open:0,soon:0,wait:0,done:0}, a={'':0,local:0,'全国':0};
   visible().forEach(function(e){ var p=phase(e,now); if(c[p]!==undefined) c[p]++ });
+  var today=visible().filter(function(e){ return !!todayReason(e,now) }).length;
+  $('cToday').textContent=today||'';
   all().forEach(function(e){
     if(phase(e,now)!=='open') return;
     ['','local','全国'].forEach(function(k){ if(inArea(e,k)) a[k]++ });
@@ -461,7 +634,7 @@ function counts(){
     b.setAttribute('aria-pressed', b.dataset.area===area?'true':'false') });
 }
 
-function render(){ renderHero(); counts(); renderList();
+function render(){ renderHero(); renderSummary(); counts(); renderList();
   $('stamp').textContent=STAMP+'。内容は変わることがあるので、応募前に必ず公式ページで確認してください。';
   $('showEndedBtn').textContent=showEnded?'終了した未応募を隠す':'終了した未応募も見る';
 }
@@ -503,6 +676,11 @@ $('areas').addEventListener('click',function(ev){
   var b=ev.target.closest('.chip'); if(!b) return;
   area=b.dataset.area; try{ localStorage.setItem(AKEY,area) }catch(e){}
   render();
+});
+$('summary').addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-jump]'); if(!b) return;
+  tab=b.dataset.jump; syncTabs(); renderList();
+  window.scrollTo({top:0,behavior:'smooth'});
 });
 $('showEndedBtn').onclick=function(){ showEnded=!showEnded; tab='open'; syncTabs(); render() };
 
@@ -580,7 +758,7 @@ function pull(){
 }
 
 load(); syncTabs(); render(); pull();
-setInterval(function(){ renderHero(); if(tab==='open') renderList() },30000);
+setInterval(function(){ renderHero(); renderSummary(); if(tab==='open'||tab==='today') renderList() },30000);
 setInterval(pull,600000);
 document.addEventListener('visibilitychange',function(){ if(!document.hidden) pull() });
 })();
