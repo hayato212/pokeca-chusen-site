@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>抽選メモ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9ECF1;--card:#FFFFFF;--ink:#19202B;--ink-2:#5C6676;--ink-3:#8B95A4;
+  --line:#D3D9E2;--hot:#D92650;--hot-soft:#FBE7EC;--win:#0E8A5F;--win-soft:#E1F3EC;
+  --lose:#8B95A4;--field:#F4F6F9;--track:#E2E6EC;--shadow:0 1px 0 rgba(25,32,43,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111722;--card:#19212E;--ink:#E8ECF3;--ink-2:#9AA5B5;--ink-3:#6E7889;
+    --line:#2C3747;--hot:#FF5C7F;--hot-soft:#3A1B26;--win:#3BC28C;--win-soft:#12342A;
+    --lose:#6E7889;--field:#121A26;--track:#26303F;--shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111722;--card:#19212E;--ink:#E8ECF3;--ink-2:#9AA5B5;--ink-3:#6E7889;
+  --line:#2C3747;--hot:#FF5C7F;--hot-soft:#3A1B26;--win:#3BC28C;--win-soft:#12342A;
+  --lose:#6E7889;--field:#121A26;--track:#26303F;--shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);
+  font-family:"Zen Kaku Gothic New",-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+  font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.num{font-family:"Barlow Semi Condensed","Zen Kaku Gothic New",sans-serif;font-variant-numeric:tabular-nums}
+.wrap{max-width:640px;margin:0 auto;padding:20px 16px 100px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--hot);outline-offset:2px;border-radius:4px}
+
+.top{display:flex;align-items:baseline;gap:9px;margin-bottom:12px}
+.top h1{font-size:17px;font-weight:700;margin:0;letter-spacing:.04em}
+.top .sub{font-size:11px;color:var(--ink-3)}
+.theme{margin-left:auto;background:none;border:none;color:var(--ink-3);font-size:12px;padding:4px}
+
+.hero{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 17px;
+  margin-bottom:14px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--hot)}
+.hero .lead{font-size:12px;color:var(--ink-2)}
+.hero .clock{font-size:40px;font-weight:700;line-height:1.1;color:var(--hot);display:block}
+.hero .clock small{font-size:17px;font-weight:600;margin:0 2px 0 1px}
+.hero .who{font-size:13px;margin-top:5px;color:var(--ink-2)}
+.hero .who b{color:var(--ink);font-weight:700}
+.hero.calm::before{background:var(--line)}
+.hero.calm .clock{font-size:19px;color:var(--ink);font-weight:500;line-height:1.5}
+
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin-bottom:13px}
+.tab{background:none;border:none;padding:8px 9px 9px;font-size:13px;color:var(--ink-3);
+  border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--ink);font-weight:700;border-bottom-color:var(--hot)}
+.tab em{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:3px}
+
+.areas{display:flex;gap:6px;margin:-4px 0 12px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:4px 12px;font-size:12px;color:var(--ink-2)}
+.chip em{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:4px}
+.chip[aria-pressed="true"]{border-color:var(--hot);background:var(--hot-soft);color:var(--hot);font-weight:700}
+.chip[aria-pressed="true"] em{color:var(--hot)}
+
+.list{display:flex;flex-direction:column;gap:10px}
+.item{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);overflow:hidden}
+.item.hot{border-color:var(--hot)}
+.head{display:block;width:100%;text-align:left;background:none;border:none;padding:13px 14px 11px}
+.eyebrow{font-size:12px;color:var(--ink-2);display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.tagk{border:1px solid var(--line);border-radius:4px;padding:0 5px;font-size:11px;color:var(--ink-3)}
+.head h3{margin:2px 0 0;font-size:16px;font-weight:700;line-height:1.45;word-break:break-word}
+.head .goto{font-size:12px;color:var(--hot);margin-top:5px;font-weight:700}
+.head .goto.off{color:var(--ink-3);font-weight:400}
+
+.period{padding:0 14px 12px}
+.bar{height:5px;background:var(--track);border-radius:99px;overflow:hidden;margin-bottom:5px}
+.bar i{display:block;height:100%;background:var(--hot);border-radius:99px}
+.bar.done i{background:var(--ink-3)}
+.span{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3);gap:8px}
+.span b{color:var(--hot);font-weight:700}
+.span b.cool{color:var(--ink-2)}
+.note{font-size:12px;color:var(--ink-3);padding:0 14px 11px;white-space:pre-wrap;word-break:break-word;margin-top:-4px}
+
+.acts{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 13px}
+.pill{border:1px solid var(--line);background:var(--field);border-radius:99px;padding:5px 12px;font-size:12px;line-height:1.5}
+.pill.go{border-color:var(--hot);color:var(--hot);background:var(--hot-soft);font-weight:700}
+.pill.win{border-color:var(--win);color:var(--win);background:var(--win-soft);font-weight:700}
+.pill.ghost{background:none;color:var(--ink-3);border-color:transparent;padding:5px 6px}
+.badge{display:inline-block;font-size:11px;font-weight:700;padding:1px 7px;border-radius:99px;margin-right:6px}
+.b-win{background:var(--win-soft);color:var(--win)}
+.b-lose{background:var(--field);color:var(--lose)}
+.b-wait{background:var(--hot-soft);color:var(--hot)}
+
+.empty{border:1px dashed var(--line);border-radius:12px;padding:26px 18px;text-align:center;color:var(--ink-2);font-size:13px}
+.empty b{display:block;color:var(--ink);font-size:14px;margin-bottom:4px}
+.stamp{font-size:11px;color:var(--ink-3);text-align:center;margin-top:16px;line-height:1.6}
+.foot{display:flex;gap:14px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.foot button{background:none;border:none;color:var(--ink-3);font-size:12px;text-decoration:underline;padding:4px}
+
+.sheet{position:fixed;inset:0;background:rgba(10,14,20,.5);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.sheet[hidden]{display:none}
+.sheet .panel{background:var(--card);width:100%;max-width:640px;max-height:92vh;overflow:auto;
+  border-radius:16px 16px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));border-top:3px solid var(--hot)}
+@media (min-width:700px){.sheet{align-items:center}.sheet .panel{border-radius:14px}}
+.panel h2{margin:0 0 6px;font-size:16px}
+.panel p.lead{font-size:13px;color:var(--ink-2);margin:0 0 14px}
+label{display:block;font-size:12px;color:var(--ink-2);margin:0 0 4px}
+.f{margin-bottom:12px}
+.row{display:flex;gap:10px}
+.row .f{flex:1;min-width:0}
+input,textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--field);
+  border:1px solid var(--line);border-radius:9px;padding:9px 10px}
+textarea{resize:vertical;min-height:58px;font-size:15px}
+.go-row{display:flex;gap:9px;margin-top:14px}
+.btn{flex:1;border:1px solid var(--line);background:var(--field);border-radius:10px;padding:12px;font-size:14px}
+.btn.primary{background:var(--hot);border-color:var(--hot);color:#fff;font-weight:700}
+.danger{background:none;border:none;color:var(--hot);font-size:12px;margin-top:12px;padding:4px 0}
+.backup textarea{min-height:150px;font-size:12px;font-family:ui-monospace,monospace}
+
+.fab{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom));
+  z-index:20;background:var(--hot);color:#fff;border:none;border-radius:99px;padding:13px 24px;
+  font-size:15px;font-weight:700;box-shadow:0 6px 20px rgba(217,38,80,.35)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>抽選メモ</h1>
+    <span class="sub">ポケカ / ワンピ</span>
+    <button class="theme" id="themeBtn">表示切替</button>
+  </div>
+
+  <div class="hero" id="hero"></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="open" aria-selected="true">受付中<em id="cOpen"></em></button>
+    <button class="tab" role="tab" data-tab="soon" aria-selected="false">開始前<em id="cSoon"></em></button>
+    <button class="tab" role="tab" data-tab="wait" aria-selected="false">結果待ち<em id="cWait"></em></button>
+    <button class="tab" role="tab" data-tab="done" aria-selected="false">結果<em id="cDone"></em></button>
+  </div>
+
+  <div class="areas" id="areas">
+    <button class="chip" data-area="" aria-pressed="true">すべて<em id="aAll"></em></button>
+    <button class="chip" data-area="local" aria-pressed="false">宮城・福島<em id="aLocal"></em></button>
+    <button class="chip" data-area="全国" aria-pressed="false">全国・通販<em id="aWide"></em></button>
+  </div>
+
+  <div class="list" id="list"></div>
+
+  <div class="stamp" id="stamp"></div>
+  <div class="foot">
+    <button id="showEndedBtn">終了した未応募も見る</button>
+    <button id="backupBtn">バックアップ</button>
+  </div>
+</div>
+
+<button class="fab" id="addBtn">＋ 自分で追加</button>
+
+<!-- 応募確認 -->
+<div class="sheet" id="askSheet" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="askTitle">
+    <h2 id="askTitle">応募できましたか？</h2>
+    <p class="lead" id="askWho"></p>
+    <div class="go-row">
+      <button class="btn" id="askNo">まだ</button>
+      <button class="btn primary" id="askYes">応募した</button>
+    </div>
+  </div>
+</div>
+
+<!-- 追加・編集 -->
+<div class="sheet" id="editSheet" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="edTitle">
+    <h2 id="edTitle">自分で追加</h2>
+    <p class="lead">一覧にない店舗や、店頭抽選の分はここから。</p>
+    <div class="f"><label for="fShop">店舗・サイト</label><input id="fShop" placeholder="例：カードラッシュ郡山店"></div>
+    <div class="f"><label for="fItem">対象商品</label><input id="fItem" placeholder="例：30th CELEBRATION BOX"></div>
+    <div class="row">
+      <div class="f"><label for="fStart">受付開始</label><input id="fStart" type="datetime-local"></div>
+      <div class="f"><label for="fEnd">受付終了</label><input id="fEnd" type="datetime-local"></div>
+    </div>
+    <div class="f"><label for="fAnn">当選発表</label><input id="fAnn" type="date"></div>
+    <div class="f"><label for="fUrl">応募ページのURL</label><input id="fUrl" type="url" inputmode="url" placeholder="https://"></div>
+    <div class="f"><label for="fNote">メモ</label><textarea id="fNote" placeholder="会員条件、使ったアカウント、購入期限など"></textarea></div>
+    <div class="go-row">
+      <button class="btn" id="edCancel">やめる</button>
+      <button class="btn primary" id="edSave">保存する</button>
+    </div>
+    <button class="danger" id="edDelete" hidden>これを削除する</button>
+  </div>
+</div>
+
+<!-- バックアップ -->
+<div class="sheet" id="bkSheet" hidden>
+  <div class="panel backup" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
+    <h2 id="bkTitle">バックアップ</h2>
+    <p class="lead">応募状況と自分で追加した分は、この端末のブラウザにだけ保存されています。別の端末で使うときは下をコピーして貼り直してください。</p>
+    <textarea id="bkArea" spellcheck="false"></textarea>
+    <div class="go-row">
+      <button class="btn" id="bkCopy">コピー</button>
+      <button class="btn" id="bkRestore">貼り付けた内容で復元</button>
+    </div>
+    <div class="go-row" style="margin-top:9px"><button class="btn" id="bkClose">閉じる</button></div>
+  </div>
+</div>
+
+<script>
+(function(){
+/* ===== 調査時点で受付中だった抽選（2026年9月16日 調べ） ===== */
+var CATALOG=[
+ {id:'pco-30th',shop:'ポケモンセンターオンライン',area:'全国',item:'30th CELEBRATION BOX / カードセット各種 / FUTURISTIC BOX',
+  kind:'WEB抽選',start:'2026-09-11T16:00',end:'2026-09-16T16:59',announce:'2026-09-30',
+  url:'https://www.pokemoncenter-online.com/lottery/landing-page.html',
+  note:'本人認証枠と未認証枠の2枠。当選後の注文・支払いは9/30 13:00〜10/6 16:59。プレミアムデッキセットはこの回の対象外。'},
+ {id:'aeon-online',shop:'イオンスタイルオンライン',area:'全国',item:'メガブレイブ / メガシンフォニア',
+  kind:'WEB抽選',start:'2026-09-11T11:00',end:'2026-09-21T23:59',announce:'',
+  url:'https://aeonretail.com/Page/k-lottery_cardgame.aspx',note:''},
+ {id:'toysrus',shop:'トイザらス各店',item:'30th CELEBRATION カードセット各種',
+  kind:'店頭抽選',start:'2026-09-11T10:00',end:'2026-09-27T21:00',announce:'2026-10-14',
+  url:'',note:'スターカード会員限定。購入実績による条件あり。店頭ポスターのQRコードから応募。営業時間は店舗ごとに違う。'},
+ {id:'nojima-secret',shop:'ノジマオンライン',area:'全国',item:'シークレット販売会（ポケカ新弾ほか）',
+  kind:'招待制',start:'2026-09-06T12:00',end:'',announce:'',
+  url:'https://contents.online.nojima.co.jp/secret202609/',
+  note:'会員IDが必要。複数IDでのエントリーは無効。終了日は告知されていない。'}
+];
+var STAMP='2026年9月16日時点で受付中だった商品の抽選販売';
+
+var SKEY='chusen.state.v2', CKEY='chusen.custom.v2', OLD='chusen.entries.v1', TKEY='chusen.theme', AKEY='chusen.area.v1';
+var state={}, custom=[], tab='open', editing=null, pending=null, showEnded=false;
+var area=''; /* '' = すべて / 'local' = 宮城・福島 / '全国' */
+var $=function(i){return document.getElementById(i)};
+
+/* ---- storage ---- */
+function load(){
+  try{ state=JSON.parse(localStorage.getItem(SKEY)||'{}')||{} }catch(e){ state={} }
+  try{ custom=JSON.parse(localStorage.getItem(CKEY)||'[]')||[] }catch(e){ custom=[] }
+  try{ area=localStorage.getItem(AKEY)||'' }catch(e){ area='' }
+  if(!Array.isArray(custom)) custom=[];
+  /* 前バージョンのデータを引き継ぐ */
+  try{
+    var old=JSON.parse(localStorage.getItem(OLD)||'null');
+    if(Array.isArray(old)&&old.length&&!custom.length){
+      old.forEach(function(e){
+        custom.push({id:e.id,shop:e.shop||'',item:e.name||'',kind:'',start:'',end:e.deadline||'',
+          announce:e.announce||'',url:e.url||'',note:e.memo||'',mine:true});
+        state[e.id]={status:e.status==='todo'?'none':e.status};
+      });
+      saveCustom(); saveState();
+    }
+  }catch(e){}
+}
+function saveState(){ try{ localStorage.setItem(SKEY,JSON.stringify(state)) }catch(e){} }
+function saveCustom(){ try{ localStorage.setItem(CKEY,JSON.stringify(custom)) }catch(e){} }
+
+/* ---- helpers ---- */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){
+  return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function dt(s){ if(!s) return null; var d=new Date(s); return isNaN(d)?null:d }
+function md(d){ return (d.getMonth()+1)+'/'+d.getDate() }
+function wd(d){ return '日月火水木金土'.charAt(d.getDay()) }
+function hm(d){ var m=d.getMinutes(); return d.getHours()+':'+(m<10?'0':'')+m }
+function stamp(d){ return md(d)+'('+wd(d)+') '+hm(d) }
+function pad(n){ return (n<10?'0':'')+n }
+function st(id){ return (state[id]&&state[id].status)||'none' }
+function setSt(id,v){ state[id]=state[id]||{}; state[id].status=v; state[id].at=Date.now(); saveState() }
+
+function all(){ return CATALOG.concat(custom) }
+
+/* エリアの絞り込み。エリアが判らないもの（自分で追加した分など）はどの絞り込みでも出す */
+function inArea(e,a){
+  if(!a||!e.area) return true;
+  return a==='local' ? (e.area==='宮城'||e.area==='福島') : e.area===a;
+}
+function visible(){ return all().filter(function(e){ return inArea(e,area) }) }
+
+function phase(e,now){
+  var s=dt(e.start), en=dt(e.end), v=st(e.id);
+  if(v==='won'||v==='lost') return 'done';
+  if(v==='applied') return 'wait';
+  if(s&&s>now) return 'soon';
+  if(en&&en<now) return 'ended';
+  return 'open';
+}
+
+function remain(end,now){
+  var ms=end-now; if(ms<=0) return null;
+  var mins=Math.floor(ms/60000), hours=Math.floor(mins/60);
+  return {days:Math.floor(hours/24),hours:hours%24,mins:mins%60,totalHours:hours};
+}
+
+/* ---- hero ---- */
+function renderHero(){
+  var now=new Date(), best=null,bestD=null;
+  visible().forEach(function(e){
+    if(phase(e,now)!=='open') return;
+    var d=dt(e.end); if(!d||d<=now) return;
+    if(!bestD||d<bestD){bestD=d;best=e}
+  });
+  var h=$('hero');
+  if(!best){
+    var w=visible().filter(function(e){return phase(e,new Date())==='wait'}).length;
+    h.className='hero calm';
+    h.innerHTML='<div class="lead">次の締切</div><span class="clock">'+
+      (w? '締切待ちはなし。'+w+'件が結果待ちです。':'いま応募できる抽選はありません。')+'</span>';
+    return;
+  }
+  var r=remain(bestD,now), big;
+  if(r.days>=1) big='<span class="num">'+r.days+'</span><small>日</small><span class="num">'+r.hours+'</span><small>時間</small>';
+  else if(r.totalHours>=1) big='<span class="num">'+r.hours+'</span><small>時間</small><span class="num">'+r.mins+'</span><small>分</small>';
+  else big='<span class="num">'+r.mins+'</span><small>分</small>';
+  h.className='hero';
+  h.innerHTML='<div class="lead">次の締切まで</div><span class="clock">'+big+'</span>'+
+    '<div class="who"><b>'+esc(best.shop)+'</b>　'+esc(best.item)+'<br>'+stamp(bestD)+'まで</div>';
+}
+
+/* ---- card ---- */
+function card(e){
+  var now=new Date(), p=phase(e,now), s=dt(e.start), en=dt(e.end), an=dt(e.announce), v=st(e.id);
+  var hot=false, spanL='', spanR='', pct=0, barDone=false;
+
+  if(en){
+    var r=remain(en,now);
+    if(!r){ spanR='<b class="cool">受付終了</b>'; pct=100; barDone=true; }
+    else if(s&&s>now){ spanR='<b class="cool">開始まであと'+(remain(s,now).days>=1?remain(s,now).days+'日':remain(s,now).totalHours+'時間')+'</b>'; pct=0 }
+    else{
+      hot = r.totalHours<48;
+      spanR='<b>残り'+(r.days>=1? r.days+'日'+r.hours+'時間' : r.totalHours+':'+pad(r.mins))+'</b>';
+      if(s) pct=Math.max(2,Math.min(100,(now-s)/(en-s)*100)); else pct=50;
+    }
+    spanL=(s?stamp(s):'？')+'　→　'+stamp(en);
+  }else{
+    spanL=(s?stamp(s)+' 〜':'期間未定'); spanR='<b class="cool">終了日の告知なし</b>'; pct=40;
+  }
+
+  var badge='';
+  if(v==='applied') badge='<span class="badge b-wait">応募ずみ</span>';
+  if(v==='won') badge='<span class="badge b-win">当選</span>';
+  if(v==='lost') badge='<span class="badge b-lose">落選</span>';
+
+  var meta='<span class="tagk">'+esc(e.kind||'抽選')+'</span>';
+  if(e.area) meta+='<span class="tagk">'+esc(e.area)+'</span>';
+  if(an) meta+='<span>発表 '+md(an)+'('+wd(an)+')</span>';
+  if(e.mine) meta+='<span class="tagk">自分で追加</span>';
+
+  var headInner='<div class="eyebrow">'+meta+'</div>'+
+    '<h3>'+badge+esc(e.shop)+'</h3>'+
+    '<div style="font-size:13px;color:var(--ink-2);margin-top:1px">'+esc(e.item)+'</div>'+
+    (e.url? '<div class="goto">応募ページを開く</div>' : '<div class="goto off">'+(e.kind==='店頭抽選'?'店頭で応募':'リンクなし')+'</div>');
+
+  var head = e.url
+    ? '<button class="head" data-act="open" data-id="'+e.id+'">'+headInner+'</button>'
+    : '<div class="head">'+headInner+'</div>';
+
+  var acts='';
+  if(p==='open'||p==='soon'||p==='ended'){
+    acts+='<button class="pill go" data-act="applied" data-id="'+e.id+'">応募ずみにする</button>';
+  }else if(p==='wait'){
+    acts+='<button class="pill win" data-act="won" data-id="'+e.id+'">当選</button>'+
+          '<button class="pill" data-act="lost" data-id="'+e.id+'">落選</button>'+
+          '<button class="pill ghost" data-act="none" data-id="'+e.id+'">取り消す</button>';
+  }else{
+    acts+='<button class="pill ghost" data-act="applied" data-id="'+e.id+'">結果待ちに戻す</button>';
+  }
+  if(e.mine) acts+='<button class="pill ghost" data-act="edit" data-id="'+e.id+'">編集</button>';
+
+  return '<div class="item'+(hot&&p==='open'?' hot':'')+'">'+head+
+    '<div class="period"><div class="bar'+(barDone?' done':'')+'"><i style="width:'+pct+'%"></i></div>'+
+    '<div class="span"><span>'+spanL+'</span>'+spanR+'</div></div>'+
+    (e.note?'<div class="note">'+esc(e.note)+'</div>':'')+
+    '<div class="acts">'+acts+'</div></div>';
+}
+
+function listFor(t){
+  var now=new Date();
+  var arr=visible().filter(function(e){
+    var p=phase(e,now);
+    if(t==='open') return p==='open'||(showEnded&&p==='ended');
+    return p===t;
+  });
+  arr.sort(function(a,b){
+    var x=dt(t==='soon'?a.start:a.end), y=dt(t==='soon'?b.start:b.end);
+    if(!x) return 1; if(!y) return -1; return x-y;
+  });
+  return arr;
+}
+
+function renderList(){
+  var arr=listFor(tab), el=$('list');
+  if(!arr.length){
+    var m={open:['受付中の抽選はありません','締切が過ぎた未応募分は自動で隠れています。'],
+           soon:['開始待ちはありません','これから始まる抽選が入るとここに出ます。'],
+           wait:['結果待ちはありません','応募したら「応募ずみにする」を押してください。'],
+           done:['まだ結果は出ていません','当落がついた分はここに残ります。']}[tab];
+    el.innerHTML='<div class="empty"><b>'+m[0]+'</b>'+m[1]+'</div>';
+    return;
+  }
+  el.innerHTML=arr.map(card).join('');
+}
+
+function counts(){
+  var now=new Date(), c={open:0,soon:0,wait:0,done:0}, a={'':0,local:0,'全国':0};
+  visible().forEach(function(e){ var p=phase(e,now); if(c[p]!==undefined) c[p]++ });
+  all().forEach(function(e){
+    if(phase(e,now)!=='open') return;
+    ['','local','全国'].forEach(function(k){ if(inArea(e,k)) a[k]++ });
+  });
+  $('cOpen').textContent=c.open||''; $('cSoon').textContent=c.soon||'';
+  $('cWait').textContent=c.wait||''; $('cDone').textContent=c.done||'';
+  $('aAll').textContent=a['']||''; $('aLocal').textContent=a.local||''; $('aWide').textContent=a['全国']||'';
+  Array.prototype.forEach.call(document.querySelectorAll('.chip'),function(b){
+    b.setAttribute('aria-pressed', b.dataset.area===area?'true':'false') });
+}
+
+function render(){ renderHero(); counts(); renderList();
+  $('stamp').textContent=STAMP+'。内容は変わることがあるので、応募前に必ず公式ページで確認してください。';
+  $('showEndedBtn').textContent=showEnded?'終了した未応募を隠す':'終了した未応募も見る';
+}
+
+/* ---- actions ---- */
+$('list').addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-act]'); if(!b) return;
+  var id=b.dataset.id, act=b.dataset.act;
+  var e=all().filter(function(x){return x.id===id})[0]; if(!e) return;
+  if(act==='open'){
+    pending=id;
+    try{ window.open(e.url,'_blank','noopener') }catch(err){}
+    return;
+  }
+  if(act==='edit'){ openEdit(e); return; }
+  setSt(id,act); render();
+});
+
+/* 戻ってきたら確認 */
+document.addEventListener('visibilitychange',function(){
+  if(document.hidden) return;
+  if(pending && st(pending)==='none'){
+    var e=all().filter(function(x){return x.id===pending})[0];
+    if(e){ $('askWho').textContent=e.shop+'／'+e.item; $('askSheet').hidden=false; return; }
+  }
+  pending=null; render();
+});
+$('askYes').onclick=function(){ if(pending) setSt(pending,'applied'); pending=null; $('askSheet').hidden=true; render() };
+$('askNo').onclick=function(){ pending=null; $('askSheet').hidden=true; render() };
+
+/* ---- tabs ---- */
+function syncTabs(){
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'),function(t){
+    t.setAttribute('aria-selected',t.dataset.tab===tab?'true':'false')})
+}
+Array.prototype.forEach.call(document.querySelectorAll('.tab'),function(t){
+  t.onclick=function(){ tab=t.dataset.tab; syncTabs(); renderList() }});
+$('areas').addEventListener('click',function(ev){
+  var b=ev.target.closest('.chip'); if(!b) return;
+  area=b.dataset.area; try{ localStorage.setItem(AKEY,area) }catch(e){}
+  render();
+});
+$('showEndedBtn').onclick=function(){ showEnded=!showEnded; tab='open'; syncTabs(); render() };
+
+/* ---- add / edit ---- */
+function openEdit(e){
+  editing=e||null;
+  $('edTitle').textContent=e?'編集':'自分で追加';
+  $('fShop').value=e?e.shop:''; $('fItem').value=e?e.item:'';
+  $('fStart').value=e?e.start:''; $('fEnd').value=e?e.end:'';
+  $('fAnn').value=e?e.announce:''; $('fUrl').value=e?e.url:''; $('fNote').value=e?e.note:'';
+  $('edDelete').hidden=!e; $('editSheet').hidden=false;
+  setTimeout(function(){ $('fShop').focus() },30);
+}
+$('addBtn').onclick=function(){ openEdit(null) };
+$('edCancel').onclick=function(){ $('editSheet').hidden=true; editing=null };
+$('editSheet').onclick=function(ev){ if(ev.target===$('editSheet')){ $('editSheet').hidden=true; editing=null } };
+$('edSave').onclick=function(){
+  var shop=$('fShop').value.trim(), item=$('fItem').value.trim();
+  if(!shop&&!item){ $('fShop').focus(); return }
+  var v={shop:shop,item:item,kind:'',start:$('fStart').value,end:$('fEnd').value,
+    announce:$('fAnn').value,url:$('fUrl').value.trim(),note:$('fNote').value.trim(),mine:true};
+  if(editing){ for(var k in v) editing[k]=v[k] }
+  else{ v.id='m'+Date.now()+Math.floor(Math.random()*999); custom.push(v); tab='open'; syncTabs() }
+  saveCustom(); $('editSheet').hidden=true; editing=null; render();
+};
+$('edDelete').onclick=function(){
+  if(!editing) return;
+  custom=custom.filter(function(x){return x.id!==editing.id});
+  delete state[editing.id]; saveCustom(); saveState();
+  $('editSheet').hidden=true; editing=null; render();
+};
+
+/* ---- backup ---- */
+$('backupBtn').onclick=function(){ $('bkArea').value=JSON.stringify({state:state,custom:custom}); $('bkSheet').hidden=false };
+$('bkClose').onclick=function(){ $('bkSheet').hidden=true };
+$('bkSheet').onclick=function(ev){ if(ev.target===$('bkSheet')) $('bkSheet').hidden=true };
+$('bkCopy').onclick=function(){
+  var a=$('bkArea'); a.select();
+  try{
+    if(navigator.clipboard) navigator.clipboard.writeText(a.value); else document.execCommand('copy');
+    $('bkCopy').textContent='コピーしました'; setTimeout(function(){ $('bkCopy').textContent='コピー' },1600);
+  }catch(e){ $('bkCopy').textContent='手動で選択してコピーを' }
+};
+$('bkRestore').onclick=function(){
+  try{
+    var o=JSON.parse($('bkArea').value);
+    if(!o||typeof o!=='object') throw 0;
+    state=o.state||{}; custom=Array.isArray(o.custom)?o.custom:[];
+    saveState(); saveCustom(); $('bkSheet').hidden=true; render();
+  }catch(e){
+    $('bkRestore').textContent='読み込めませんでした';
+    setTimeout(function(){ $('bkRestore').textContent='貼り付けた内容で復元' },2400);
+  }
+};
+
+/* ---- theme ---- */
+try{ var t=localStorage.getItem(TKEY); if(t) document.documentElement.setAttribute('data-theme',t) }catch(e){}
+$('themeBtn').onclick=function(){
+  var cur=document.documentElement.getAttribute('data-theme'), next=cur==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',next);
+  try{ localStorage.setItem(TKEY,next) }catch(e){}
+};
+document.addEventListener('keydown',function(ev){
+  if(ev.key==='Escape'){ $('editSheet').hidden=true; $('bkSheet').hidden=true; $('askSheet').hidden=true; editing=null; pending=null }
+});
+
+/* ---- data.json を読みにいく（同じフォルダに置く） ---- */
+function pull(){
+  if(location.protocol==='file:') return; /* file:// では読めないので内蔵データを使う */
+  fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(function(r){
+    if(!r.ok) throw 0; return r.json();
+  }).then(function(j){
+    if(j&&Array.isArray(j.items)){ CATALOG=j.items; if(j.stamp) STAMP=j.stamp; render(); }
+  }).catch(function(){});
+}
+
+load(); syncTabs(); render(); pull();
+setInterval(function(){ renderHero(); if(tab==='open') renderList() },30000);
+setInterval(pull,600000);
+document.addEventListener('visibilitychange',function(){ if(!document.hidden) pull() });
+})();
+</script>
+</body>
+</html>
