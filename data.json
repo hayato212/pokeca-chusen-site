@@ -152,19 +152,6 @@
       "note": "プレイヤーズクラブ会員限定。応募フォームから必要事項とデッキコードを入力して応募。プロモカードは後日郵送で届けられます。受け取りにはマイナンバーカードを用いた本人確認が必要です。 出典: ポケカ抽選図鑑"
     },
     {
-      "id": "auto:cardchusen:card-storm-emeralda-tsutaya-card-kinshicho-2026-09-24",
-      "shop": "TSUTAYA Trading Card 錦糸町",
-      "area": "全国",
-      "ships": null,
-      "item": "MEGA 拡張パック「ストームエメラルダ」",
-      "kind": "WEB抽選",
-      "start": "",
-      "end": "2026-09-24T21:00",
-      "announce": "",
-      "url": "https://livepocket.jp/e/y4-lv",
-      "note": "条件: 会員/本人確認 ① Livepocketに会員登録する ② 抽選ページで商品を選んで申し込む ③ 支払い方法を選ぶ ④ 当選するとメールで通知が届く ⑤ 期日までに支払いを済ませる 出典: トレゲト"
-    },
-    {
       "id": "auto:cardchusen:card-30th-celebration-fewmany-online-2026-09-24",
       "shop": "FEWMANY オンラインショップ",
       "area": "全国",
@@ -800,6 +787,19 @@
       "announce": "",
       "url": "https://x.com/t_takachiho_tcg/status/2102952999471698008",
       "note": "条件: 会員 ① お店に行き、店頭に掲示された抽選案内のQRコードを読み取る ② Livepocketに会員登録する（未登録の場合） ③ 応募フォームの注意事項を読み、必要事項を入力して申し込む ④ 当落はLivepocketのマイページかメールで確認する ⑤ 当選したら期限内にお店で購入する 出典: トレゲト"
+    },
+    {
+      "id": "auto:cardchusen:card-storm-emeralda-tsutaya-card-kinshicho-2026-09-24",
+      "shop": "TSUTAYA Trading Card 錦糸町",
+      "area": "全国",
+      "ships": null,
+      "item": "MEGA 拡張パック「ストームエメラルダ」",
+      "kind": "WEB抽選",
+      "start": "",
+      "end": "2026-09-24T21:00",
+      "announce": "",
+      "url": "https://cardchusen.com/pokeka#card-storm-emeralda-tsutaya-card-kinshicho-2026-09-24",
+      "note": "出典: トレゲト"
     },
     {
       "id": "auto:cardchusen:card-30th-celebration-dmm-myca-2026-09-23",
