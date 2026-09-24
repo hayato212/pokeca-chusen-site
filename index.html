@@ -175,6 +175,15 @@ textarea{resize:vertical;min-height:58px;font-size:15px}
   padding:13px 26px;font-size:15px;font-weight:800;box-shadow:4px 4px 0 var(--line)}
 .fab:active{transform:translateX(-50%) translate(2px,2px);box-shadow:2px 2px 0 var(--line)}
 
+/* ゲーム選択 */
+.gamesel{position:relative}
+.gamesel::after{content:"▾";position:absolute;right:11px;top:50%;transform:translateY(-52%);
+  font-size:12px;color:var(--ink);pointer-events:none}
+.gamesel select{appearance:none;-webkit-appearance:none;font:inherit;font-size:13px;font-weight:800;
+  color:var(--ink);background:var(--sun);border:2px solid var(--line);border-radius:99px;
+  padding:4px 28px 4px 14px;box-shadow:var(--shadow-sm);cursor:pointer}
+.gamesel select:focus{outline:none}
+
 /* 今日やること：サマリー */
 .summary{display:flex;gap:7px;margin:0 0 13px;flex-wrap:wrap}
 .sum{display:flex;align-items:baseline;gap:5px;background:var(--card);border:2px solid var(--line);
@@ -223,7 +232,14 @@ textarea{resize:vertical;min-height:58px;font-size:15px}
 <div class="wrap">
   <div class="top">
     <h1>抽選メモ</h1>
-    <span class="sub">ポケカ / ワンピ / 遊戯王</span>
+    <div class="gamesel">
+      <select id="gameSel" aria-label="カードゲームを選ぶ">
+        <option value="">すべて</option>
+        <option value="ポケカ">ポケカ</option>
+        <option value="ワンピース">ワンピ</option>
+        <option value="遊戯王">遊戯王</option>
+      </select>
+    </div>
     <button class="theme" id="themeBtn">表示切替</button>
   </div>
 
@@ -325,9 +341,10 @@ var CATALOG=[
 ];
 var STAMP='2026年9月16日時点で受付中だった商品の抽選販売';
 
-var SKEY='chusen.state.v2', CKEY='chusen.custom.v2', OLD='chusen.entries.v1', TKEY='chusen.theme', AKEY='chusen.area.v1';
+var SKEY='chusen.state.v2', CKEY='chusen.custom.v2', OLD='chusen.entries.v1', TKEY='chusen.theme', AKEY='chusen.area.v1', GKEY='chusen.game.v1';
 var state={}, custom=[], tab='today', editing=null, pending=null, showEnded=false;
 var area=''; /* '' = すべて / 'local' = 宮城・福島 / '全国' */
+var game=''; /* '' = すべて / 'ポケカ' / 'ワンピース' / '遊戯王' */
 var $=function(i){return document.getElementById(i)};
 
 /* ---- storage ---- */
@@ -335,6 +352,7 @@ function load(){
   try{ state=JSON.parse(localStorage.getItem(SKEY)||'{}')||{} }catch(e){ state={} }
   try{ custom=JSON.parse(localStorage.getItem(CKEY)||'[]')||[] }catch(e){ custom=[] }
   try{ area=localStorage.getItem(AKEY)||'' }catch(e){ area='' }
+  try{ game=localStorage.getItem(GKEY)||'' }catch(e){ game='' }
   if(!Array.isArray(custom)) custom=[];
   /* 前バージョンのデータを引き継ぐ */
   try{
@@ -366,12 +384,24 @@ function setSt(id,v){ state[id]=state[id]||{}; state[id].status=v; state[id].at=
 
 function all(){ return CATALOG.concat(custom) }
 
+/* どのカードゲームか。data.json に game があればそれを使い、無い分（手入力・自分で追加）は文面から判定する */
+function gameOf(e){
+  if(e.game) return e.game;
+  var t=(e.item||'')+' '+(e.shop||'')+' '+(e.note||'');
+  if(/ワンピ|ONE PIECE|OP-?\d{2}|EB-?\d{2}/i.test(t)) return 'ワンピース';
+  if(/遊戯王|遊☆戯☆王|yu-?gi-?oh|OCG|ラッシュデュエル/i.test(t)) return '遊戯王';
+  if(/ポケ|pok[eé]mon|CELEBRATION|メガ|ストームエメラルダ|スタートデッキ/i.test(t)) return 'ポケカ';
+  return '';
+}
+/* 選んだゲームで絞る。判定できないものはどの選択でも出す */
+function inGame(e,g){ if(!g) return true; var v=gameOf(e); return !v||v===g }
+
 /* エリアの絞り込み。エリアが判らないもの（自分で追加した分など）はどの絞り込みでも出す */
 function inArea(e,a){
   if(!a||!e.area) return true;
   return a==='local' ? (e.area==='宮城'||e.area==='福島') : e.area===a;
 }
-function visible(){ return all().filter(function(e){ return inArea(e,area) }) }
+function visible(){ return all().filter(function(e){ return inArea(e,area)&&inGame(e,game) }) }
 
 function phase(e,now){
   var s=dt(e.start), en=dt(e.end), v=st(e.id);
@@ -473,6 +503,7 @@ function renderSummary(){
 /* 条件タグ。今あるデータ（エリア・方式・配送・note の「条件:」）だけから作る */
 function tagsOf(e){
   var t=[];
+  var g=gameOf(e); if(g&&!game) t.push(g);
   if(e.kind) t.push(e.kind);
   if(e.area) t.push(e.area);
   if(e.ships===true) t.push('配送あり');
@@ -624,9 +655,20 @@ function counts(){
   var today=visible().filter(function(e){ return !!todayReason(e,now) }).length;
   $('cToday').textContent=today||'';
   all().forEach(function(e){
-    if(phase(e,now)!=='open') return;
+    if(phase(e,now)!=='open'||!inGame(e,game)) return;
     ['','local','全国'].forEach(function(k){ if(inArea(e,k)) a[k]++ });
   });
+  /* ドロップダウンに件数を出す（受付中の数） */
+  var gc={'':0,'ポケカ':0,'ワンピース':0,'遊戯王':0};
+  all().forEach(function(e){
+    if(phase(e,now)!=='open'||!inArea(e,area)) return;
+    gc['']++; var v=gameOf(e); if(gc[v]!==undefined) gc[v]++;
+  });
+  Array.prototype.forEach.call($('gameSel').options,function(o){
+    var base={'':'すべて','ポケカ':'ポケカ','ワンピース':'ワンピ','遊戯王':'遊戯王'}[o.value];
+    o.textContent=base+'（'+(gc[o.value]||0)+'）';
+  });
+  $('gameSel').value=game;
   $('cOpen').textContent=c.open||''; $('cSoon').textContent=c.soon||'';
   $('cWait').textContent=c.wait||''; $('cDone').textContent=c.done||'';
   $('aAll').textContent=a['']||''; $('aLocal').textContent=a.local||''; $('aWide').textContent=a['全国']||'';
@@ -672,6 +714,11 @@ function syncTabs(){
 }
 Array.prototype.forEach.call(document.querySelectorAll('.tab'),function(t){
   t.onclick=function(){ tab=t.dataset.tab; syncTabs(); renderList() }});
+$('gameSel').onchange=function(){
+  game=$('gameSel').value;
+  try{ localStorage.setItem(GKEY,game) }catch(e){}
+  render();
+};
 $('areas').addEventListener('click',function(ev){
   var b=ev.target.closest('.chip'); if(!b) return;
   area=b.dataset.area; try{ localStorage.setItem(AKEY,area) }catch(e){}
