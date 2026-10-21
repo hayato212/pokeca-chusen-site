@@ -1,5 +1,5 @@
 {
-  "stamp": "2026年10月21日時点で受付中だった商品の抽選販売",
+  "stamp": "2026年10月22日時点で受付中だった商品の抽選販売",
   "items": [
     {
       "id": "pco-30th",
@@ -35,23 +35,6 @@
       "note": "スターカード会員限定。購入実績による条件あり。店頭ポスターのQRコードから応募。営業時間は店舗ごとに違う。"
     },
     {
-      "id": "auto:pokecanavi:lot_04b075b91ce1efc7",
-      "shop": "トレカプラザ55通販店",
-      "area": "全国",
-      "ships": true,
-      "item": "30th CELEBRATION BOX",
-      "game": "ポケカ",
-      "kind": "WEB抽選",
-      "start": "",
-      "end": "2026-10-20T23:59",
-      "announce": "",
-      "url": "https://docs.google.com/forms/d/e/1FAIpQLSePKfIfAzVnfBIaMb9zqMCJLsbD7qxnViMgAbAYzy-6dBzjAA/viewform",
-      "source": "ポケカ抽選図鑑",
-      "official": false,
-      "checkedAt": "2026-10-20T15:37:39.306Z",
-      "note": "トレカプラザ55通販店にて、ポケモンカード30周年記念商品の抽選販売を実施。応募期間は10月20日まで。当選者にはメールで連絡があり、購入期限は10月26日までです。商品は順次発送されます。 出典: ポケカ抽選図鑑"
-    },
-    {
       "id": "auto:pokecanavi:lot_a5b61560c9f3e04c",
       "shop": "ホビーステーション",
       "area": "全国",
@@ -65,8 +48,25 @@
       "url": "https://livepocket.jp/e/4_jau",
       "source": "ポケカ抽選図鑑",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:39.306Z",
+      "checkedAt": "2026-10-21T15:55:23.585Z",
       "note": "ホビーステーションにて「30th CELEBRATION BOX」の抽選予約受付中です。応募期間は10月20日(火)12:00～10月22日(木)23:59まで。購入期限は11月2日(月)～11月8日(日)です。 店頭受取（宮城・福島に店舗あり） 出典: ポケカ抽選図鑑"
+    },
+    {
+      "id": "auto:pokecanavi:lot_3341d424e00738fd",
+      "shop": "駿河屋利府店（宮城）",
+      "area": "宮城",
+      "ships": false,
+      "item": "30th CELEBRATION BOX",
+      "game": "ポケカ",
+      "kind": "SNS抽選",
+      "start": "",
+      "end": "2026-10-22T23:59",
+      "announce": "",
+      "url": "https://x.com/surugaya_rifu/status/2112823060269281670",
+      "source": "ポケカ抽選図鑑",
+      "official": false,
+      "checkedAt": "2026-10-21T15:55:23.585Z",
+      "note": "当選後、店舗に本人様が必ずご来店頂ける方が対象です。応募方法や注意事項は画像をご確認ください。 店頭受取のみ 出典: ポケカ抽選図鑑"
     },
     {
       "id": "auto:pokecanavi:lot_e0cb39073f202ae8",
@@ -82,8 +82,25 @@
       "url": "https://x.com/litaikair/status/2107745744266707330",
       "source": "ポケカ抽選図鑑",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:39.306Z",
+      "checkedAt": "2026-10-21T15:55:23.585Z",
       "note": "応募はフォロー＆リツイートで受付。締切は10/23(金)まで。商品の受け取り方法については、画像をご確認ください。 店頭受取のみ 出典: ポケカ抽選図鑑"
+    },
+    {
+      "id": "auto:pokecanavi:lot_a576b2289139a3d1",
+      "shop": "DMMマイカ",
+      "area": "全国",
+      "ships": true,
+      "item": "プレミアムデッキセット エーフィ・ブラッキー",
+      "game": "ポケカ",
+      "kind": "WEB抽選",
+      "start": "",
+      "end": "2026-10-27T23:59",
+      "announce": "",
+      "url": "https://myca.dmm.com/campaign/eb2jk-kiy-i5",
+      "source": "ポケカ抽選図鑑",
+      "official": false,
+      "checkedAt": "2026-10-21T15:55:23.585Z",
+      "note": "DMMマイカにて「プレミアムデッキセット エーフィ・ブラッキー」の抽選販売を実施。応募期間は10/27まで。直近1ヶ月の購入5,000円ごとに1口応募可能。当選後の購入期間は11/6までです。 出典: ポケカ抽選図鑑"
     },
     {
       "id": "auto:pokecanavi:lot_4353647446e75751",
@@ -99,7 +116,7 @@
       "url": "https://x.com/westbeachgym/status/2112505213886337446",
       "source": "ポケカ抽選図鑑",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:39.306Z",
+      "checkedAt": "2026-10-21T15:55:23.585Z",
       "note": "アカウントフォローとポストのリポスト・いいねで応募。1セット1200円。店頭受取または郵送（送料別途990円）が可能。お一人様1セットまで。 出典: ポケカ抽選図鑑"
     },
     {
@@ -116,7 +133,7 @@
       "url": "https://www.pokemon-card.com/info/005506.html",
       "source": "ポケカ抽選図鑑",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:39.306Z",
+      "checkedAt": "2026-10-21T15:55:23.585Z",
       "note": "プレイヤーズクラブ会員限定。応募フォームから必要事項とデッキコードを入力して応募。プロモカードは後日郵送で届けられます。受け取りにはマイナンバーカードを用いた本人確認が必要です。 出典: ポケカ抽選図鑑"
     },
     {
@@ -133,7 +150,7 @@
       "url": "https://www.torecolo.jp/shop/form/form.aspx?questionnaire=poke20261009-2",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 会員 出典: トレゲト"
     },
     {
@@ -150,8 +167,25 @@
       "url": "https://www.torecolo.jp/shop/form/form.aspx?questionnaire=poke20261009-1",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 会員 出典: トレゲト"
+    },
+    {
+      "id": "auto:cardchusen:card-special-deck-set-mega-3-yamada-denki-2026-10-21",
+      "shop": "ヤマダデンキ（ヤマダデジタル会員アプリ）（宮城）",
+      "area": "宮城",
+      "ships": null,
+      "item": "MEGA スペシャルデッキセットMEGA「メガオーダイル・メガカイリュー・メガゲンガー」",
+      "game": "ポケカ",
+      "kind": "WEB抽選",
+      "start": "",
+      "end": "2026-10-21T23:59",
+      "announce": "",
+      "url": "https://www.yamada-denki.jp/service/pointservice/digital-kaiin.html",
+      "source": "トレゲト",
+      "official": false,
+      "checkedAt": "2026-10-21T08:27:43.245Z",
+      "note": "条件: アプリ/会員 ① ヤマダデジタル会員のアプリに登録する ② 「店舗セール」で受け取り店舗などを入力して応募する ③ 当選者にだけアプリかメールで連絡が来る ④ 期限内に指定のお店でバーコードを見せて購入する 出典: トレゲト"
     },
     {
       "id": "auto:cardchusen:card-30th-celebration-luruna-card-2026-10-22",
@@ -167,8 +201,25 @@
       "url": "https://x.com/luruna_card/status/2108206575722631554",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 会員/SNS応募 ① お店の公式X（旧Twitter）アカウントをフォローする ② 対象の抽選告知の投稿に「いいね」を付ける ③ 同じ投稿をリポスト（リツイート）する ④ 当落はXのダイレクトメッセージで届く（当選者のみ連絡の場合が多い） ⑤ 当選したら案内された方法・期間内に購入する 出典: トレゲト"
+    },
+    {
+      "id": "auto:cardchusen:card-30th-celebration-gosanke-hobibi-tsuhan-2026-10-22",
+      "shop": "ホビビ通販部",
+      "area": "全国",
+      "ships": true,
+      "item": "MEGA「30th CELEBRATION カードセット」各種（キャンセル分・各1,200円＋ゆうパック送料600円）",
+      "game": "ポケカ",
+      "kind": "WEB抽選",
+      "start": "",
+      "end": "2026-10-22T23:59",
+      "announce": "",
+      "url": "https://docs.google.com/forms/d/e/1FAIpQLSe59ulHbfZYOuDnMZYJAfkDoYb_zK7c_0AeNMpMdof9TmRgmA/viewform",
+      "source": "トレゲト",
+      "official": false,
+      "checkedAt": "2026-10-21T08:27:43.245Z",
+      "note": "条件: レシート ① 告知にあるGoogleフォームを開く ② 必要事項を入力して送信する ③ お店からの連絡（当選メールなど）を待つ ④ 当選したら期限内にお店で購入する 出典: トレゲト"
     },
     {
       "id": "auto:cardchusen:card-30th-celebration-rirai-2026-10-23",
@@ -184,7 +235,7 @@
       "url": "https://x.com/LitaikaiR/status/2107745744266707330",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: SNS応募 ① お店の公式X（旧Twitter）アカウントをフォローする ② 抽選案内の投稿をリポスト（リツイート）する ③ これで応募完了（店頭での手続きは不要） ④ 当選した人にだけ、お店から直接ダイレクトメッセージが届く ⑤ 当選したら購入期間内にお店へ行き、Xのアカウント画面と当選DMを見せて購入する 出典: トレゲト"
     },
     {
@@ -201,7 +252,7 @@
       "url": "https://x.com/luruna_card/status/2106286816974500152",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: SNS応募 ① お店の公式X（旧Twitter）アカウントをフォローする ② 対象の抽選告知の投稿に「いいね」を付ける ③ 同じ投稿をリポスト（リツイート）する ④ 当落はXのダイレクトメッセージで届く（当選者のみ連絡の場合が多い） ⑤ 当選したら案内された方法・期間内に購入する 出典: トレゲト"
     },
     {
@@ -218,7 +269,7 @@
       "url": "https://x.com/magi_sendai/status/2110964590737854861",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: SNS応募 ① お店の公式X（旧Twitter）アカウントをフォローする ② 抽選案内の投稿をリポスト（リツイート）する ③ これで応募完了（店頭での手続きは不要） ④ 当選した人にだけ、お店から直接ダイレクトメッセージが届く ⑤ 当選したら購入期間内にお店へ行き、Xのアカウント画面と当選DMを見せて購入する 出典: トレゲト"
     },
     {
@@ -235,7 +286,7 @@
       "url": "https://card.luruna.jp/items/163162690",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 会員/レシート/SNS応募 ① お店のBASEショップの商品ページを開く ② 「抽選に応募する」ボタンを押す ③ PAY ID（BASEの購入用アカウント）でログインまたは登録する ④ 支払い方法（クレジットカードなど）を登録して応募する（この時点でカード決済が行われます） ⑤ 当選発表日に結果がメールで届く。当選ならそのまま商品が発送される ⑥ 落選した場合はカード決済が取り消される（返金のタイミングはカード会社によって異なります） 出典: トレゲト"
     },
     {
@@ -252,7 +303,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCRBL5J",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -269,7 +320,7 @@
       "url": "https://amzn.to/4u8x7CI",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -286,7 +337,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GP928YDZ?m=AN1VRQENFRJN5&aod=1&f_new=1&f_freeShipping=1&linkCode=sl1&tag=nnowapp-22",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -303,7 +354,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCYMRGL",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -320,7 +371,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCC7W7Q",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -337,7 +388,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCX46KQ",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -354,7 +405,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCZ1VDC",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -371,7 +422,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCSGX8Y",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -388,7 +439,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCPF84C",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -405,7 +456,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCTRZ8L",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -422,7 +473,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GXCT83HB",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -439,7 +490,7 @@
       "url": "https://x.com/risesonline/status/2090771153115914348",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: SNS応募 ① お店の公式X（旧Twitter）アカウントをフォローする ② 対象の抽選告知の投稿をリポスト（リツイート）する ③ 告知に貼られている抽選ページを開いて応募する ④ 当落はその場で画面に表示される ⑤ 当選したら案内にしたがって購入する（全国発送に対応する店舗もあります） 出典: トレゲト"
     },
     {
@@ -456,7 +507,7 @@
       "url": "https://contents.online.nojima.co.jp/secret202609/",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 会員 ① 告知の方法で抽選に参加する ② 当選した場合だけ通知が届く ③ 期限内に購入する 出典: トレゲト"
     },
     {
@@ -473,7 +524,7 @@
       "url": "https://www.1999.co.jp/11371442",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -490,7 +541,7 @@
       "url": "https://www.1999.co.jp/11371443",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -507,7 +558,7 @@
       "url": "https://docs.google.com/forms/d/e/1FAIpQLSfbRaAnh1VOUHLTqwcZBcoIC90iTT4uHzNFW99H2PdrMTQJqA/viewform",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 会員 ① 告知の方法で抽選に参加する ② 当選した場合だけ通知が届く ③ 期限内に購入する 出典: トレゲト"
     },
     {
@@ -524,7 +575,7 @@
       "url": "https://www.amazon.co.jp/dp/B0FLD7HMRP",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -541,7 +592,7 @@
       "url": "https://cardchusen.com/pokeka#card-30th-celebration-dmm-myca-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -558,7 +609,7 @@
       "url": "https://cardchusen.com/pokeka#card-30th-celebration-torecaplaza55-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -575,7 +626,7 @@
       "url": "https://cardchusen.com/pokeka#card-30th-celebration-premium-deck-torecaplaza55-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -592,7 +643,7 @@
       "url": "https://cardchusen.com/pokeka#card-storm-emeralda-torecaplaza55-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -609,7 +660,7 @@
       "url": "https://cardchusen.com/pokeka#card-mega-brave-torecaplaza55-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -626,7 +677,7 @@
       "url": "https://cardchusen.com/pokeka#card-mega-symphonia-torecaplaza55-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -643,24 +694,7 @@
       "url": "https://cardchusen.com/pokeka#card-special-deck-set-mega-3-aeon-style-online-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
-      "note": "出典: トレゲト"
-    },
-    {
-      "id": "auto:cardchusen:card-30th-celebration-wondergoo-newseido-2026-10-19",
-      "shop": "WonderGOO・新星堂・Ganryu各店（宮城）",
-      "area": "宮城",
-      "ships": null,
-      "item": "MEGA 拡張パック「30th CELEBRATION」1BOX（再販分）",
-      "game": "ポケカ",
-      "kind": "店頭抽選",
-      "start": "",
-      "end": "2026-10-19T20:59",
-      "announce": "",
-      "url": "https://cardchusen.com/pokeka#card-30th-celebration-wondergoo-newseido-2026-10-19",
-      "source": "トレゲト",
-      "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -677,7 +711,7 @@
       "url": "https://www.torecolo.jp/shop/form/form.aspx?questionnaire=OP20261010",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -694,7 +728,7 @@
       "url": "https://x.com/Midori_SiraKawa/status/2106007863936332149",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 本人確認 ① お店に行き、店頭に掲示された抽選案内のQRコードをスマートフォンで読み取る ② 応募フォームの注意事項を読み、必要事項を入力して申し込む ③ 受付が完了したら、受付番号の画面をスクリーンショットで保存しておく ④ 当落は店内の掲示と、お店の公式X（旧Twitter）で確認する ⑤ 当選したら購入期間内にお店へ行き、本人確認書類を見せて購入する 出典: トレゲト"
     },
     {
@@ -708,10 +742,10 @@
       "start": "",
       "end": "2026-10-25T22:00",
       "announce": "",
-      "url": "https://x.com/BA_onahamaTA/status/2111985690057781680",
+      "url": "https://livepocket.jp/e/m740m",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 会員/本人確認 ① お店に行き、店頭に掲示された抽選案内のQRコードを読み取る ② Livepocketに会員登録する（未登録の場合） ③ 応募フォームの注意事項を読み、必要事項を入力して申し込む ④ 当落はLivepocketのマイページかメールで確認する ⑤ 当選したら期限内にお店で購入する 出典: トレゲト"
     },
     {
@@ -728,8 +762,25 @@
       "url": "https://www.animate-onlineshop.jp/products/detail.php?product_id=3567552",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
+    },
+    {
+      "id": "auto:cardchusen:card-eb05-heroines-v2-op-official-shop-2026-10-25",
+      "shop": "ONE PIECEカードゲーム公式ショップ各店（ナムコパークス）（宮城）",
+      "area": "宮城",
+      "ships": null,
+      "item": "エクストラブースター「ONE PIECE Heroines Edition vol.2」【EB-05】購入権（事前抽選・販売日 10/31〜11/4）",
+      "game": "ワンピース",
+      "kind": "WEB抽選",
+      "start": "",
+      "end": "2026-10-25T23:59",
+      "announce": "",
+      "url": "https://parks2.bandainamco-am.co.jp/category/ECCL00000061/",
+      "source": "トレゲト",
+      "official": false,
+      "checkedAt": "2026-10-21T08:27:43.245Z",
+      "note": "条件: 会員/本人確認 ① 会員登録してバンダイナムコIDを設定する ② 商品ページで応募する（1商品1個） ③ 当選者にだけメールが届く ④ 期限内に購入・決済する 出典: トレゲト"
     },
     {
       "id": "auto:cardchusen:card-eb05-heroines-v2-rirai-2026-10-29",
@@ -745,7 +796,7 @@
       "url": "https://x.com/LitaikaiR/status/2106559224046293362",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: SNS応募 ① お店の公式X（旧Twitter）アカウントをフォローする ② 対象の抽選告知の投稿に「いいね」を付ける ③ 同じ投稿をリポスト（リツイート）する ④ 当落はXのダイレクトメッセージで届く（当選者のみ連絡の場合が多い） ⑤ 当選したら案内された方法・期間内に購入する 出典: トレゲト"
     },
     {
@@ -762,7 +813,7 @@
       "url": "https://x.com/LitaikaiR/status/2109929053230858530",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: SNS応募 ① お店の公式X（旧Twitter）アカウントをフォローする ② 対象の抽選告知の投稿に「いいね」を付ける ③ 同じ投稿をリポスト（リツイート）する ④ 当落はXのダイレクトメッセージで届く（当選者のみ連絡の場合が多い） ⑤ 当選したら案内された方法・期間内に購入する 出典: トレゲト"
     },
     {
@@ -779,7 +830,7 @@
       "url": "https://www.amazon.co.jp/dp/B0H43ZX8LK",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -796,7 +847,7 @@
       "url": "https://www.amazon.co.jp/dp/B0GN5JV7JS",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -813,7 +864,7 @@
       "url": "https://www.amazon.co.jp/dp/B0HB3JQ6P4",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -830,7 +881,7 @@
       "url": "https://www.amazon.co.jp/dp/B0DDWZWW1Z",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -847,7 +898,7 @@
       "url": "https://www.amazon.co.jp/dp/B0HFVPJF4Q",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -864,7 +915,7 @@
       "url": "https://www.amazon.co.jp/dp/B0D46M9DHD",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -881,7 +932,7 @@
       "url": "https://www.amazon.co.jp/dp/B0FQB2BQHM",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -898,7 +949,7 @@
       "url": "https://www.amazon.co.jp/dp/B0FX7X71KK",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -915,7 +966,7 @@
       "url": "https://www.amazon.co.jp/dp/B0G2VKBZML",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -932,7 +983,7 @@
       "url": "https://www.amazon.co.jp/dp/B0FJ7Z6RML",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "① 商品ページで抽選に参加する ② 当選するとメールで通知が届く ③ 期限内（72時間以内）に購入する 出典: トレゲト"
     },
     {
@@ -949,8 +1000,25 @@
       "url": "https://x.com/HobbyOFF_TCG/status/2111663498224910502",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "条件: 本人確認 ① お店で応募する（応募用紙か、店頭の端末・アプリ） ② 名前や連絡先の記入、本人確認を求められることがある ③ 抽選結果を確認する（店頭の掲示・電話・アプリ通知など） ④ 当選したら期間内にお店へ行って購入する 出典: トレゲト"
+    },
+    {
+      "id": "auto:cardchusen:card-eb05-heroines-v2-torecacapital-2026-10-25",
+      "shop": "トレカ・キャピタル各店（エディオン）",
+      "area": "全国",
+      "ships": null,
+      "item": "エクストラブースター「ONE PIECE Heroines Edition vol.2」【EB-05】",
+      "game": "ワンピース",
+      "kind": "WEB抽選",
+      "start": "",
+      "end": "2026-10-25T23:59",
+      "announce": "",
+      "url": "https://edion-cp.com/onepi1031",
+      "source": "トレゲト",
+      "official": false,
+      "checkedAt": "2026-10-21T08:27:43.245Z",
+      "note": "① 応募ページで携帯電話番号を入力し「受付コード送信」を押す ② 届いたSMS（ショートメッセージ）に記載のURLを開く ③ 購入希望店舗・お住まいの都道府県・会員ナンバー・受付コードを入力して応募する ④ 当選発表日に当選者だけに連絡が来る ⑤ 各購入期限までに商品を購入する 出典: トレゲト"
     },
     {
       "id": "auto:cardchusen:card-eb05-heroines-v2-torecaplaza55-2026-10-20",
@@ -966,7 +1034,7 @@
       "url": "https://cardchusen.com/onepiece#card-eb05-heroines-v2-torecaplaza55-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -983,7 +1051,7 @@
       "url": "https://cardchusen.com/onepiece#card-eb05-heroines-v2-dorasuta-online-2026-10-20",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -1000,7 +1068,7 @@
       "url": "https://cardchusen.com/onepiece#card-op17-saikyo-no-senshi-rakuten-books-2026-10-18",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
@@ -1017,7 +1085,7 @@
       "url": "https://cardchusen.com/onepiece#card-eb05-heroines-v2-rakuten-books-2026-10-18",
       "source": "トレゲト",
       "official": false,
-      "checkedAt": "2026-10-20T15:37:36.657Z",
+      "checkedAt": "2026-10-21T08:27:43.245Z",
       "note": "出典: トレゲト"
     },
     {
